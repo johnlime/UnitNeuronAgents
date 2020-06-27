@@ -1,0 +1,11 @@
+DerivedData/*
+!DerivedData/UnitNeuronAgents/
+
+DerivedData/UnitNeuronAgents/*
+!DerivedData/UnitNeuronAgents/Build/
+
+DerivedData/UnitNeuronAgents/Build/*
+!DerivedData/UnitNeuronAgents/Build/Products/
+
+DerivedData/UnitNeuronAgents/Build/Products/*
+!DerivedData/UnitNeuronAgents/Build/Products/Release/
