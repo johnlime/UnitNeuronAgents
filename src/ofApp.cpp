@@ -3,15 +3,23 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetBackgroundColor(0, 0, 0);
+    
+    // set references for neighboring neurons
+    
+    // sample a pixel from window (1024,768)
+    
+    // iterations of Kohonen's SOM
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    // step forward toward target positions within SOM
+    // per each agent
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    // display controllable agent
     test.ca_display();
 }
 

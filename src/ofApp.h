@@ -24,4 +24,5 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         ControllableAgent test = ControllableAgent(ofVec2f(50, 50), ofVec3f(255, 255, 255));
+        // float neighboring neurons
 };
