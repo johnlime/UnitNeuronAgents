@@ -13,7 +13,17 @@ ControllableAgent :: ControllableAgent(ofVec2f _init_position, ofVec3f _color)
     color = _color;
 }
 
-void ControllableAgent :: ca_display()
+void ControllableAgent :: update_target(ofVec2f _position)
+{
+    target_position = _position;
+}
+
+void ControllableAgent :: move()
+{
+    position += (target_position - position).normalize();
+}
+
+void ControllableAgent :: display()
 {
     ofSetColor(color.x, color.y, color.z);
     ofDrawCircle(position.x, position.y, radius);

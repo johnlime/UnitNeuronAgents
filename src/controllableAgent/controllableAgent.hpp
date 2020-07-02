@@ -10,16 +10,20 @@
 
 #include <stdio.h>
 #include <ofMain.h>
+#include "UnitNeuronsLib.hpp"
 
 class ControllableAgent
 {
 private:
     float radius = 10.0f;
     ofVec2f position;
+    ofVec2f target_position;
     ofVec3f color;
     
 public:
     ControllableAgent(ofVec2f _init_position, ofVec3f _color);
-    void ca_display();
+    void update_target(ofVec2f _position);
+    void move();
+    void display();
 };
 #endif /* controllableAgent_hpp */
