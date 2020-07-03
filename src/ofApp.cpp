@@ -4,6 +4,10 @@
 void ofApp::setup(){
     ofSetBackgroundColor(0, 0, 0);
     
+    /*
+    Kohonen's Self Organizing Map and Controllable Agent Setup
+    */
+    
     // allocate memory for mapping neurons and agents
     for (int i = 0; i < NODE_D * NODE_D; i++){ // 2x2 nodes
         FloatMappingNeuron* tmp_n = new FloatMappingNeuron((FloatUnitNeuron**) io_neuron, 2, query_manager, MAX_RANGE);
@@ -133,6 +137,13 @@ void ofApp::setup(){
         global_operator.execute();
         query_manager->execute_all();
     }
+    
+    /*
+    Heat Map Grid display settings
+    */
+    
+    // grid setup
+    // would require object instances that represent individual cells
 }
 
 //--------------------------------------------------------------
@@ -150,8 +161,19 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    // display controllable agent
-    for (int i = 0; i < NODE_D * NODE_D; i++){
-        agents[i]->display();
-    }
+    // if statement
+    
+        // display controllable agent
+        for (int i = 0; i < NODE_D * NODE_D; i++){
+            agents[i]->display();
+        }
+        
+        // heat map display version
+}
+
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button)
+{
+    // controllable agent display and heat map display switch
+    // (boolean or string variable)
 }
