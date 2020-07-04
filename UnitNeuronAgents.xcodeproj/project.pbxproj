@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D147704D24A5DD3700975CC9 /* controllableAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D147704B24A5DD3700975CC9 /* controllableAgent.cpp */; };
 		D147705624A6D73300975CC9 /* libUnit.Neurons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D147705224A6C9E800975CC9 /* libUnit.Neurons.a */; };
+		D1B69F2324B0381C001F5AF3 /* heatMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D1B69F2124B0381C001F5AF3 /* heatMap.cpp */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,8 @@
 		D147704F24A6C72F00975CC9 /* libUnit.Neurons.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUnit.Neurons.a; path = ../../../../../../Desktop/som_nn_agent/external/libUnit.Neurons.a; sourceTree = "<group>"; };
 		D147705024A6C7FC00975CC9 /* libUnit.Neurons.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUnit.Neurons.a; path = UnitNeuronAgents.xcodeproj/external/libUnit.Neurons.a; sourceTree = "<group>"; };
 		D147705224A6C9E800975CC9 /* libUnit.Neurons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = libUnit.Neurons.a; path = external/libUnit.Neurons.a; sourceTree = "<group>"; };
+		D1B69F2124B0381C001F5AF3 /* heatMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = heatMap.cpp; sourceTree = "<group>"; };
+		D1B69F2224B0381C001F5AF3 /* heatMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = heatMap.hpp; sourceTree = "<group>"; };
 		E42962AC2163EDD300A6A9E2 /* ofCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofCamera.cpp; path = ../../../libs/openFrameworks/3d/ofCamera.cpp; sourceTree = SOURCE_ROOT; };
 		E42962AD2163EDD300A6A9E2 /* ofMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ofMesh.h; path = ../../../libs/openFrameworks/3d/ofMesh.h; sourceTree = SOURCE_ROOT; };
 		E42962AE2163EDD300A6A9E2 /* ofNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ofNode.h; path = ../../../libs/openFrameworks/3d/ofNode.h; sourceTree = SOURCE_ROOT; };
@@ -257,6 +260,15 @@
 				D147704F24A6C72F00975CC9 /* libUnit.Neurons.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D1B69F2024B03802001F5AF3 /* heatMap */ = {
+			isa = PBXGroup;
+			children = (
+				D1B69F2224B0381C001F5AF3 /* heatMap.hpp */,
+				D1B69F2124B0381C001F5AF3 /* heatMap.cpp */,
+			);
+			path = heatMap;
 			sourceTree = "<group>";
 		};
 		E42962AA2163EDD300A6A9E2 /* openFrameworks */ = {
@@ -558,6 +570,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D1B69F2024B03802001F5AF3 /* heatMap */,
 				D147704A24A5DD1C00975CC9 /* controllableAgent */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
@@ -667,6 +680,7 @@
 				D147704D24A5DD3700975CC9 /* controllableAgent.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				D1B69F2324B0381C001F5AF3 /* heatMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
