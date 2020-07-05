@@ -26,10 +26,12 @@ private:
     int width;
     int height;
     int pixel_width;
+    int pixel_height;
     int num_selected_cells;
     
 public:
     HeatMap(int _width, int _height, int _pixels);
+    HeatMap(int _width, int _height, int _pixel_width, int _pixel_height);
     ~HeatMap();
     void select(int _x, int _y);
     void select_by_pixel(int _pixel_x, int _pixel_y);

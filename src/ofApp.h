@@ -45,5 +45,5 @@ class ofApp : public ofBaseApp{
         /*
         Heat Map Grid display settings
         */
-        HeatMap heat_map = HeatMap(3, 3, 768);
+        HeatMap heat_map = HeatMap(10, 10, 1024,768);
 };

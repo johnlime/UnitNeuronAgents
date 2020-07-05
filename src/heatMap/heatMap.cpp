@@ -12,6 +12,21 @@ HeatMap :: HeatMap(int _width, int _height, int _pixels)
     width = _width;
     height = _height;
     pixel_width = _pixels;
+    pixel_height = _pixels;
+    all_heat_cells = (HeatCell*) malloc(sizeof(HeatCell) * (width * height)); // array by rows
+    for (int i = 0; i < width * height; i++)
+    {
+        all_heat_cells[i].selected = false;
+    }
+    num_selected_cells = 0;
+}
+
+HeatMap :: HeatMap(int _width, int _height, int _pixel_width, int _pixel_height)
+{
+    width = _width;
+    height = _height;
+    pixel_width = _pixel_width;
+    pixel_height = _pixel_height;
     all_heat_cells = (HeatCell*) malloc(sizeof(HeatCell) * (width * height)); // array by rows
     for (int i = 0; i < width * height; i++)
     {
@@ -40,7 +55,7 @@ void HeatMap :: select(int _x, int _y)
 
 void HeatMap :: select_by_pixel(int _pixel_x, int _pixel_y)
 {
-    select((int)(_pixel_x / (pixel_width / width)), int(_pixel_y / (pixel_width / width)));
+    select((int)(_pixel_x / (pixel_width / width)), int(_pixel_y / (pixel_height / height)));
 }
 
 int HeatMap :: display_num_selected_cells()
@@ -56,7 +71,7 @@ void HeatMap :: display()
         {
             if (all_heat_cells[j + i * width].selected) ofSetColor(0, 255, 0);
             else ofSetColor(0, 0, 0);
-            ofDrawRectangle((pixel_width / width) * j, (pixel_width / width) * i, (pixel_width / width), (pixel_width / width));
+            ofDrawRectangle((pixel_width / width) * j, (pixel_height / height) * i, (pixel_width / width), (pixel_height / height));
         }
     }
 }
@@ -78,5 +93,5 @@ void HeatMap :: sample(int* result)
     }
     
     result[0] = (pixel_width / width) * tmp_width + (int)((pixel_width / width) * ((float)rand() / RAND_MAX));
-    result[1] = (pixel_width / width) * tmp_height + (int)((pixel_width / width) * ((float)rand() / RAND_MAX));
+    result[1] = (pixel_height / height) * tmp_height + (int)((pixel_height / height) * ((float)rand() / RAND_MAX));
 }
