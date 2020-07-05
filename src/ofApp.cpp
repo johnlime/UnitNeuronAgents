@@ -121,29 +121,6 @@ void ofApp::setup(){
             maps[i]->assign_neighbors(tmp, 4);
         }
     }
-    
-    // train self organizing map
-    for (int i = 0; i < EPOCHS; i++)
-    {
-        // feedforward
-        io_neuron[0]->assign_value(((float)rand() / RAND_MAX) * 1024);
-        io_neuron[1]->assign_value(((float)rand() / RAND_MAX) * 768);
-        
-        for (int j = 0; j < NODE_D * NODE_D; j++){
-            maps[j]->feedforward();
-        }
-        
-        // feedback
-        global_operator.execute();
-        query_manager->execute_all();
-    }
-    
-    /*
-    Heat Map Grid display settings
-    */
-    
-    // grid setup
-    // would require object instances that represent individual cells
 }
 
 //--------------------------------------------------------------
@@ -163,17 +140,43 @@ void ofApp::update(){
 void ofApp::draw(){
     // if statement
     
-        // display controllable agent
-        for (int i = 0; i < NODE_D * NODE_D; i++){
-            agents[i]->display();
-        }
-        
-        // heat map display version
+    // heat map display version
+    heat_map.display();
+
+    // display controllable agent
+    for (int i = 0; i < NODE_D * NODE_D; i++){
+        agents[i]->display();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button)
 {
-    // controllable agent display and heat map display switch
-    // (boolean or string variable)
+    // update heat map
+    heat_map.select_by_pixel(ofGetMouseX(), ofGetMouseY());
+    
+    if (heat_map.display_num_selected_cells() == 0)
+    {
+        return;
+    }
+    
+    // train self organizing map
+    for (int i = 0; i < EPOCHS; i++)
+    {
+        // sample point from heat map
+        int sample [2];
+        heat_map.sample(sample);
+        
+        // feedforward
+        io_neuron[0]->assign_value(sample[0]);
+        io_neuron[1]->assign_value(sample[1]);
+        
+        for (int j = 0; j < NODE_D * NODE_D; j++){
+            maps[j]->feedforward();
+        }
+        
+        // feedback
+        global_operator.execute();
+        query_manager->execute_all();
+    }
 }

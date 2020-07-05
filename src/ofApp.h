@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "controllableAgent/controllableAgent.hpp"
+#include "heatMap/heatMap.hpp"
 #define NODE_D 2
 #define EPOCHS pow(10, 4)
 #define MAX_RANGE 10
@@ -40,4 +41,9 @@ class ofApp : public ofBaseApp{
     
         // define global operator
         FloatKohonenSOM global_operator = FloatKohonenSOM(maps, NODE_D * NODE_D, 2);
+    
+        /*
+        Heat Map Grid display settings
+        */
+        HeatMap heat_map = HeatMap(3, 3, 768);
 };
