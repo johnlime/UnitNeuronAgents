@@ -30,8 +30,6 @@
 /* Begin PBXFileReference section */
 		D147704B24A5DD3700975CC9 /* controllableAgent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = controllableAgent.cpp; sourceTree = "<group>"; };
 		D147704C24A5DD3700975CC9 /* controllableAgent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = controllableAgent.hpp; sourceTree = "<group>"; };
-		D147704F24A6C72F00975CC9 /* libUnit.Neurons.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUnit.Neurons.a; path = ../../../../../../Desktop/som_nn_agent/external/libUnit.Neurons.a; sourceTree = "<group>"; };
-		D147705024A6C7FC00975CC9 /* libUnit.Neurons.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUnit.Neurons.a; path = UnitNeuronAgents.xcodeproj/external/libUnit.Neurons.a; sourceTree = "<group>"; };
 		D147705224A6C9E800975CC9 /* libUnit.Neurons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = libUnit.Neurons.a; path = external/libUnit.Neurons.a; sourceTree = "<group>"; };
 		D1B69F2124B0381C001F5AF3 /* heatMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = heatMap.cpp; sourceTree = "<group>"; };
 		D1B69F2224B0381C001F5AF3 /* heatMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = heatMap.hpp; sourceTree = "<group>"; };
@@ -259,8 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				D147705224A6C9E800975CC9 /* libUnit.Neurons.a */,
-				D147705024A6C7FC00975CC9 /* libUnit.Neurons.a */,
-				D147704F24A6C72F00975CC9 /* libUnit.Neurons.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

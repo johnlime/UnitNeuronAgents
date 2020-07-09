@@ -15,16 +15,17 @@
 class EnemyVisualField
 {
 private:
-    float ratio;
+    float ratio; // ratio of the dimensions of the area
     int pixel_width;
     int pixel_height;
     
     ofVec2f enemy_position; // position expressed with 0.0f ~ 1.0f
-    vector<ofVec3f> hidden_samples; // {angle; end_point in LOS; parameter where hidden area starts}
+    vector<ofVec3f> hidden_samples; // {anglular ratio 1; anglular ratio 2; parameter where hidden area starts}
     void hidden_los_sample(); // choose a random angle + search surrounding angles for hidden areas
     
 public:
     EnemyVisualField(int _pixel_width, int _pixel_height);
+    void setEnemyPosition(float _enemy_pos_x, float _enemy_pos_y);
     ofVec2f sample(); // sample point from hidden_samples
 };
 
