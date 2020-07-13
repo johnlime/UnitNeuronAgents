@@ -16,22 +16,33 @@ EnemyVisualField :: EnemyVisualField(int _pixel_width, int _pixel_height)
     ratio = (float)pixel_height / (float)pixel_width;
 }
 
-void hidden_los_sample()
+void EnemyVisualField :: add_collider(Collider _new_collider)
+{
+    collider_list.push_back(_new_collider);
+}
+
+void EnemyVisualField :: hidden_los_sample()
 {
     if (rand() / RAND_MAX < EPSILON)
     {
         // random exploration
         float tmp = (float) rand() / RAND_MAX; // sample an anglular ratio
-        float x, y;
+        ofVec2f tmp_vec;
         for (int coef = 0; coef < VISUAL_RANGE; coef++)
         {
-            x = coef * cos(2 * M_PI * tmp);
-            y = coef * sin(2 * M_PI * tmp);
+            tmp_vec.x = coef * cos(2 * M_PI * tmp);
+            tmp_vec.y = coef * sin(2 * M_PI * tmp);
             
-            if (true) // coef hits object
+            for (int i = 0; i < collider_list.size(); i++)
             {
-                // add to hidden samples
-                break;
+                if (collider_list[i].collision_detect(tmp_vec)) // coef hits object
+                {
+                    
+                    
+                    // add to hidden samples
+//                    hidden_samples.push_back(#####);
+                    break;
+                }
             }
         }
     }
