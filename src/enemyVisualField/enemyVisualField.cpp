@@ -50,6 +50,7 @@ void EnemyVisualField :: hidden_los_sample()
     else{
         // explore surrounding of known
         
+        // if collision found, insert next to known
     }
 }
 

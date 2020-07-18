@@ -27,7 +27,7 @@ private:
     
     ofVec2f enemy_position; // position expressed with 0.0f ~ 1.0f
     vector<Collider> collider_list; // collision detection between enemy visual and meshes
-    vector<ofVec3f> hidden_samples; // {anglular ratio 1; anglular ratio 2; parameter where hidden area starts}
+    vector<ofVec2f> hidden_samples; // {anglular ratio ; parameter where hidden area starts}
     void hidden_los_sample(); // choose a random angle + search surrounding angles for hidden areas
     
 public:
