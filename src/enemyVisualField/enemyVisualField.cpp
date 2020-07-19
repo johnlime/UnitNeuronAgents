@@ -8,6 +8,7 @@
 #include "enemyVisualField.hpp"
 #define EPSILON 0.7
 #define VISUAL_RANGE 100
+#define DELTA 0.3
 
 EnemyVisualField :: EnemyVisualField(int _pixel_width, int _pixel_height)
 {
@@ -23,41 +24,47 @@ void EnemyVisualField :: add_collider(Collider _new_collider)
 
 void EnemyVisualField :: hidden_los_sample()
 {
-    // random exploration
-    if (rand() / RAND_MAX < EPSILON)
-    {
-        float tmp = (float) rand() / RAND_MAX; // sample an anglular ratio
-        ofVec2f tmp_vec;
-        for (int coef = 0; coef < VISUAL_RANGE; coef++)
-        {
-            tmp_vec.x = coef * cos(2 * M_PI * tmp);
-            tmp_vec.y = coef * sin(2 * M_PI * tmp);
-            
-            for (int i = 0; i < collider_list.size(); i++)
-            {
-                if (collider_list[i].collision_detect(tmp_vec)) // coef hits object
-                {
-                    HiddenLOS tmp_los;
-                    tmp_los.angular_ratio = tmp;
-                    tmp_los.param = coef;
-                    
-                    // add to hidden samples
-                    hidden_samples.push_back(tmp_los);
-                    break;
-                }
-            }
-        }
-    }
+    float tmp;
+    ofVec2f tmp_vec;
+    bool random;
     
     // explore surrounding of known
-    else{
+    if (rand() / RAND_MAX < EPSILON && hidden_samples.size() > 0)
+    {
+        random = false;
         // select an index from hidden_samples -1
-        int selected = rand() % (hidden_samples.size() - 1);
+        int selected = rand() % (hidden_samples.size());
         
-        // search the mid-point of the two indices
-        (hidden_samples[selected].angular_ratio + hidden_samples[selected + 1].angular_ratio) / 2;
+        // search the surrounding
+        tmp = hidden_samples[selected].angular_ratio + DELTA * (float) rand() / RAND_MAX;
+    }
+    
+    // random exploration
+    else
+    {
+        random = true;
+        tmp = (float) rand() / RAND_MAX; // sample an anglular ratio
+    }
+    
+    for (int coef = 0; coef < VISUAL_RANGE; coef++)
+    {
+        tmp_vec.x = coef * cos(2 * M_PI * tmp);
+        tmp_vec.y = coef * sin(2 * M_PI * tmp);
         
-        // if collision found, insert next to known
+        for (int i = 0; i < collider_list.size(); i++)
+        {
+            if (collider_list[i].collision_detect(tmp_vec)) // coef hits object
+            {
+                HiddenLOS tmp_los;
+                tmp_los.angular_ratio = tmp;
+                tmp_los.param = coef;
+                
+                // add to hidden samples
+                hidden_samples.push_back(tmp_los);
+                
+                break;
+            }
+        }
     }
 }
 
@@ -68,8 +75,9 @@ ofVec2f EnemyVisualField :: sample()
         throw "The ratio of the dimensions does not match the ratio of the VisualField instance!";
     }
     
+    int sample_index = rand() % hidden_samples.size();
     ofVec2f result;
-    result.x = pixel_width * (float) rand() / RAND_MAX;
-    result.y = pixel_height * (float) rand() / RAND_MAX;
+    result.x = hidden_samples[sample_index].param * cos(2 * M_PI * hidden_samples[sample_index].angular_ratio);
+    result.y = hidden_samples[sample_index].param * sin(2 * M_PI * hidden_samples[sample_index].angular_ratio);
     return result;
 }
