@@ -23,9 +23,9 @@ void EnemyVisualField :: add_collider(Collider _new_collider)
 
 void EnemyVisualField :: hidden_los_sample()
 {
+    // random exploration
     if (rand() / RAND_MAX < EPSILON)
     {
-        // random exploration
         float tmp = (float) rand() / RAND_MAX; // sample an anglular ratio
         ofVec2f tmp_vec;
         for (int coef = 0; coef < VISUAL_RANGE; coef++)
@@ -37,18 +37,25 @@ void EnemyVisualField :: hidden_los_sample()
             {
                 if (collider_list[i].collision_detect(tmp_vec)) // coef hits object
                 {
-                    
+                    HiddenLOS tmp_los;
+                    tmp_los.angular_ratio = tmp;
+                    tmp_los.param = coef;
                     
                     // add to hidden samples
-//                    hidden_samples.push_back(#####);
+                    hidden_samples.push_back(tmp_los);
                     break;
                 }
             }
         }
     }
     
+    // explore surrounding of known
     else{
-        // explore surrounding of known
+        // select an index from hidden_samples -1
+        int selected = rand() % (hidden_samples.size() - 1);
+        
+        // search the mid-point of the two indices
+        (hidden_samples[selected].angular_ratio + hidden_samples[selected + 1].angular_ratio) / 2;
         
         // if collision found, insert next to known
     }
