@@ -22,6 +22,15 @@ void EnemyVisualField :: add_collider(Collider _new_collider)
     collider_list.push_back(_new_collider);
 }
 
+void EnemyVisualField :: add_collider(std::string const &_collider_type)
+{
+//    if (_collider_type = "")
+//    {
+//
+//    }
+//    collider_list.push_back();
+}
+
 void EnemyVisualField :: hidden_los_sample()
 {
     float tmp;
@@ -80,4 +89,9 @@ ofVec2f EnemyVisualField :: sample()
     result.x = hidden_samples[sample_index].param * cos(2 * M_PI * hidden_samples[sample_index].angular_ratio);
     result.y = hidden_samples[sample_index].param * sin(2 * M_PI * hidden_samples[sample_index].angular_ratio);
     return result;
+}
+
+void EnemyVisualField :: display()
+{
+    // display colliders as wireframe
 }

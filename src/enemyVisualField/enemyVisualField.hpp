@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <vector>
 #include <ofMain.h>
+#include <string>
 
 struct Collider
 {
@@ -39,8 +40,10 @@ private:
 public:
     EnemyVisualField(int _pixel_width, int _pixel_height);
     void add_collider(Collider _new_collider); // add collision function with bool output
+    void add_collider(std::string const &_collider_type); // add collision function with bool output
     void setEnemyPosition(float _enemy_pos_x, float _enemy_pos_y);
     ofVec2f sample(); // sample point from hidden_samples
+    void display();
 };
 
 #endif
