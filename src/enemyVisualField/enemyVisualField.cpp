@@ -31,6 +31,12 @@ void EnemyVisualField :: add_collider(std::string const &_collider_type)
 //    collider_list.push_back();
 }
 
+void EnemyVisualField :: setEnemyPosition(float _enemy_pos_x, float _enemy_pos_y)
+{
+    enemy_position.x = _enemy_pos_x;
+    enemy_position.y = _enemy_pos_y;
+}
+
 void EnemyVisualField :: hidden_los_sample()
 {
     float tmp;
@@ -57,8 +63,8 @@ void EnemyVisualField :: hidden_los_sample()
     
     for (int coef = 0; coef < VISUAL_RANGE; coef++)
     {
-        tmp_vec.x = coef * cos(2 * M_PI * tmp);
-        tmp_vec.y = coef * sin(2 * M_PI * tmp);
+        tmp_vec.x = enemy_position.x + coef * cos(2 * M_PI * tmp);
+        tmp_vec.y = enemy_position.y + coef * sin(2 * M_PI * tmp);
         
         for (int i = 0; i < collider_list.size(); i++)
         {
@@ -85,9 +91,12 @@ ofVec2f EnemyVisualField :: sample()
     }
     
     int sample_index = rand() % hidden_samples.size();
+    float sample_coef = (RAND_MAX - hidden_samples[sample_index].param) * ((float) rand() / RAND_MAX)
+                        + hidden_samples[sample_index].param;
+    
     ofVec2f result;
-    result.x = hidden_samples[sample_index].param * cos(2 * M_PI * hidden_samples[sample_index].angular_ratio);
-    result.y = hidden_samples[sample_index].param * sin(2 * M_PI * hidden_samples[sample_index].angular_ratio);
+    result.x = enemy_position.x + sample_coef * cos(2 * M_PI * hidden_samples[sample_index].angular_ratio);
+    result.y = enemy_position.y + sample_coef * sin(2 * M_PI * hidden_samples[sample_index].angular_ratio);
     return result;
 }
 
