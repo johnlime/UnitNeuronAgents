@@ -22,14 +22,14 @@ void EnemyVisualField :: add_collider(Collider _new_collider)
     collider_list.push_back(_new_collider);
 }
 
-void EnemyVisualField :: add_collider(std::string const &_collider_type)
-{
+//void EnemyVisualField :: add_collider(std::string const &_collider_type)
+//{
 //    if (_collider_type = "")
 //    {
 //
 //    }
 //    collider_list.push_back();
-}
+//}
 
 void EnemyVisualField :: setEnemyPosition(float _enemy_pos_x, float _enemy_pos_y)
 {
@@ -102,5 +102,9 @@ ofVec2f EnemyVisualField :: sample()
 
 void EnemyVisualField :: display()
 {
-    // display colliders as wireframe
+    // display all colliders
+    for (int i = 0; i < collider_list.size(); i++)
+    {
+        collider_list[i].display();
+    }
 }
