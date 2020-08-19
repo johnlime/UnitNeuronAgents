@@ -7,7 +7,7 @@
 
 #include "enemyVisualField.hpp"
 #define EPSILON 0.9
-#define VISUAL_RANGE 100
+#define VISUAL_RANGE 1000
 #define DELTA 0.3
 #define ITER 1000
 
@@ -101,7 +101,7 @@ ofVec2f EnemyVisualField :: sample()
     }
     
     int sample_index = rand() % hidden_samples.size();
-    float sample_coef = (RAND_MAX - hidden_samples[sample_index].param) * ((float) rand() / RAND_MAX)
+    float sample_coef = (VISUAL_RANGE - hidden_samples[sample_index].param) * ((float) rand() / RAND_MAX)
                         + hidden_samples[sample_index].param;
     
     ofVec2f result;
