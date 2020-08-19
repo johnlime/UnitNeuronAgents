@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "controllableAgent/controllableAgent.hpp"
 #include "heatMap/heatMap.hpp"
+#include "enemyVisualField/enemyVisualField.hpp"
 #define NODE_D 2
 #define EPOCHS pow(10, 4)
 #define MAX_RANGE 10
@@ -46,4 +47,7 @@ class ofApp : public ofBaseApp{
         Heat Map Grid display settings
         */
         HeatMap heat_map = HeatMap(10, 10, 1024,768);
+    
+        // define enemy position and colliders
+        EnemyVisualField enemy_map = EnemyVisualField(1024, 768);
 };

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D100720E24ECD6660050BBF0 /* collider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D100720D24ECD6660050BBF0 /* collider.cpp */; };
 		D147704D24A5DD3700975CC9 /* controllableAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D147704B24A5DD3700975CC9 /* controllableAgent.cpp */; };
 		D147705624A6D73300975CC9 /* libUnit.Neurons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D147705224A6C9E800975CC9 /* libUnit.Neurons.a */; };
 		D1B69F2324B0381C001F5AF3 /* heatMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D1B69F2124B0381C001F5AF3 /* heatMap.cpp */; };
@@ -28,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D100720D24ECD6660050BBF0 /* collider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = collider.cpp; sourceTree = "<group>"; };
 		D147704B24A5DD3700975CC9 /* controllableAgent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = controllableAgent.cpp; sourceTree = "<group>"; };
 		D147704C24A5DD3700975CC9 /* controllableAgent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = controllableAgent.hpp; sourceTree = "<group>"; };
 		D147705224A6C9E800975CC9 /* libUnit.Neurons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = libUnit.Neurons.a; path = external/libUnit.Neurons.a; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E389CA24B37CB700DDCE66 /* enemyVisualField.hpp */,
+				D100720D24ECD6660050BBF0 /* collider.cpp */,
 				D1E389C924B37CB700DDCE66 /* enemyVisualField.cpp */,
 			);
 			path = enemyVisualField;
@@ -691,6 +694,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				D1B69F2324B0381C001F5AF3 /* heatMap.cpp in Sources */,
+				D100720E24ECD6660050BBF0 /* collider.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

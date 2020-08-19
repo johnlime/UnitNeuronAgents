@@ -6,35 +6,16 @@
 //
 
 #include "enemyVisualField.hpp"
-#define EPSILON 0.7
+#define EPSILON 0.9
 #define VISUAL_RANGE 100
 #define DELTA 0.3
+#define ITER 1000
 
 EnemyVisualField :: EnemyVisualField(int _pixel_width, int _pixel_height)
 {
     pixel_width = _pixel_width;
     pixel_height = _pixel_height;
     ratio = (float)pixel_height / (float)pixel_width;
-}
-
-void EnemyVisualField :: add_collider(Collider _new_collider)
-{
-    collider_list.push_back(_new_collider);
-}
-
-//void EnemyVisualField :: add_collider(std::string const &_collider_type)
-//{
-//    if (_collider_type = "")
-//    {
-//
-//    }
-//    collider_list.push_back();
-//}
-
-void EnemyVisualField :: setEnemyPosition(float _enemy_pos_x, float _enemy_pos_y)
-{
-    enemy_position.x = _enemy_pos_x;
-    enemy_position.y = _enemy_pos_y;
 }
 
 void EnemyVisualField :: hidden_los_sample()
@@ -47,7 +28,7 @@ void EnemyVisualField :: hidden_los_sample()
     if (rand() / RAND_MAX < EPSILON && hidden_samples.size() > 0)
     {
         random = false;
-        // select an index from hidden_samples -1
+        // select an index from hidden_samples
         int selected = rand() % (hidden_samples.size());
         
         // search the surrounding
@@ -83,11 +64,40 @@ void EnemyVisualField :: hidden_los_sample()
     }
 }
 
+void EnemyVisualField :: add_collider(Collider _new_collider)
+{
+    collider_list.push_back(_new_collider);
+    
+    // sample hidden areas
+    hidden_samples.clear();
+    for (int i = 0; i < ITER; i++)
+    {
+        hidden_los_sample();
+    }
+}
+
+void EnemyVisualField :: setEnemyPosition(float _enemy_pos_x, float _enemy_pos_y)
+{
+    enemy_position.x = _enemy_pos_x;
+    enemy_position.y = _enemy_pos_y;
+    
+    // sample hidden areas
+    hidden_samples.clear();
+    for (int i = 0; i < ITER; i++)
+    {
+        hidden_los_sample();
+    }
+}
+
 ofVec2f EnemyVisualField :: sample()
 {
     if (ratio != (float)pixel_height / (float)pixel_width)
     {
         throw "The ratio of the dimensions does not match the ratio of the VisualField instance!";
+    }
+    
+    else if (hidden_samples.size() == 0){
+        throw "Oops! No hidden spots were found!!";
     }
     
     int sample_index = rand() % hidden_samples.size();

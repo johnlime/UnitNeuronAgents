@@ -13,10 +13,15 @@
 #include <ofMain.h>
 #include <string>
 
-struct Collider
+class Collider
 {
-    bool (* collision_detect) (ofVec2f);
-    ofVec2f origin;
+private:
+    int origin [2];
+    int radius;
+    
+public:
+    Collider(int x, int y, int _radius);
+    bool collision_detect (ofVec2f);
     void display();
 };
 

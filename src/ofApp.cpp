@@ -121,6 +121,9 @@ void ofApp::setup(){
             maps[i]->assign_neighbors(tmp, 4);
         }
     }
+    
+    Collider obj = Collider(50, 50, 10);
+    enemy_map.add_collider(obj);
 }
 
 //--------------------------------------------------------------
@@ -147,36 +150,72 @@ void ofApp::draw(){
     for (int i = 0; i < NODE_D * NODE_D; i++){
         agents[i]->display();
     }
+    
+    enemy_map.display();
 }
 
 //--------------------------------------------------------------
+
+// this is a spaghetti code and a terrible implementation, but whatever
 void ofApp::mousePressed(int x, int y, int button)
 {
-    // update heat map
-    heat_map.select_by_pixel(ofGetMouseX(), ofGetMouseY());
-    
-    if (heat_map.display_num_selected_cells() == 0)
+    /*
+     Scavanging
+    */
+    if (button == 0)
     {
-        return;
-    }
-    
-    // train self organizing map
-    for (int i = 0; i < EPOCHS; i++)
-    {
-        // sample point from heat map
-        int sample [2];
-        heat_map.sample(sample);
+        // update heat map
+        heat_map.select_by_pixel(ofGetMouseX(), ofGetMouseY());
         
-        // feedforward
-        io_neuron[0]->assign_value(sample[0]);
-        io_neuron[1]->assign_value(sample[1]);
-        
-        for (int j = 0; j < NODE_D * NODE_D; j++){
-            maps[j]->feedforward();
+        if (heat_map.display_num_selected_cells() == 0)
+        {
+            return;
         }
         
-        // feedback
-        global_operator.execute();
-        query_manager->execute_all();
+        // train self organizing map
+        for (int i = 0; i < EPOCHS; i++)
+        {
+            // sample point from heat map
+            int sample [2];
+            heat_map.sample(sample);
+            
+            // feedforward
+            io_neuron[0]->assign_value(sample[0]);
+            io_neuron[1]->assign_value(sample[1]);
+            
+            for (int j = 0; j < NODE_D * NODE_D; j++){
+                maps[j]->feedforward();
+            }
+            
+            // feedback
+            global_operator.execute();
+            query_manager->execute_all();
+        }
+    }
+    
+    
+    /*
+     Hiding
+    */
+    else
+    {
+        // train self organizing map
+        for (int i = 0; i < EPOCHS; i++)
+        {
+            // sample point from heat map
+            ofVec2f sample = enemy_map.sample();
+            
+            // feedforward
+            io_neuron[0]->assign_value(sample.x);
+            io_neuron[1]->assign_value(sample.y);
+            
+            for (int j = 0; j < NODE_D * NODE_D; j++){
+                maps[j]->feedforward();
+            }
+            
+            // feedback
+            global_operator.execute();
+            query_manager->execute_all();
+        }
     }
 }
