@@ -151,7 +151,7 @@ void ofApp::draw(){
         agents[i]->display();
     }
     
-    enemy_map.display();
+//    enemy_map.display();
 }
 
 //--------------------------------------------------------------

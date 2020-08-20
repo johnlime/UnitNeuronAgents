@@ -17,6 +17,7 @@ class ControllableAgent
 private:
     float radius = 10.0f;
     ofVec2f position;
+    float orientation = 0.5f; // orientation ratio [-1, 1] to 2 * M_PI
     ofVec2f target_position;
     ofVec3f color;
     
