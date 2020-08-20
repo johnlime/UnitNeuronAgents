@@ -30,5 +30,6 @@ bool Collider :: collision_detect(ofVec2f input)
 
 void Collider :: display()
 {
+    ofSetColor(0, 0, 255);
     ofDrawCircle(origin[0], origin[1], radius);
 }

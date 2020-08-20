@@ -42,7 +42,7 @@ void ControllableAgent :: move()
     }
     
     // snap to orientation if close
-    else if (abs(orientation - target_orientation) < 0.01)
+    else if (abs(orientation - target_orientation) <= 0.01)
     {
         orientation = target_orientation;
     }

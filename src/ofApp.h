@@ -15,17 +15,7 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
 
-//		void keyPressed(int key);
-//		void keyReleased(int key);
-//		void mouseMoved(int x, int y );
-//		void mouseDragged(int x, int y, int button);
 		void mousePressed(int x, int y, int button);
-//		void mouseReleased(int x, int y, int button);
-//		void mouseEntered(int x, int y);
-//		void mouseExited(int x, int y);
-//		void windowResized(int w, int h);
-//		void dragEvent(ofDragInfo dragInfo);
-//		void gotMessage(ofMessage msg);
     
         ControllableAgent* agents [NODE_D * NODE_D];
     
@@ -46,8 +36,12 @@ class ofApp : public ofBaseApp{
         /*
         Heat Map Grid display settings
         */
-        HeatMap heat_map = HeatMap(10, 10, 1024,768);
+        HeatMap heat_map = HeatMap(10, 10, 1920,1600);
     
         // define enemy position and colliders
-        EnemyVisualField enemy_map = EnemyVisualField(1024, 768);
+        EnemyVisualField enemy_map = EnemyVisualField(1920, 1600);
+        Collider obj = Collider(900, 750, 20);
+    
+        // scavenge mode / hiding mode
+        bool scavenge = true;
 };

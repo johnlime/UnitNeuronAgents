@@ -7,7 +7,7 @@
 
 #include "enemyVisualField.hpp"
 #define EPSILON 0.9
-#define VISUAL_RANGE 1000
+#define VISUAL_RANGE 500
 #define DELTA 0.3
 #define ITER 1000
 
@@ -112,6 +112,10 @@ ofVec2f EnemyVisualField :: sample()
 
 void EnemyVisualField :: display()
 {
+    // display enemy_position
+    ofSetColor(255, 0, 0);
+    ofDrawCircle(enemy_position.x, enemy_position.y, 10);
+    
     // display all colliders
     for (int i = 0; i < collider_list.size(); i++)
     {
