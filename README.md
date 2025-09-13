@@ -6,4 +6,4 @@ An implementation of multi-agent AI for potential usage in real-time strategy (R
 - Agents constantly stay in groups or clusters while maintaing distance instead of constantly colliding with each other
 
 ## Video demonstration
-[![demo video](https://img.youtube.com/vi/j-N7ChXXdBs/hqdefault.jpg)](https://www.youtube.com/watch?v=j-N7ChXXdBs)
+[![demo video](https://img.youtube.com/vi/urNAghHCyTk/hqdefault.jpg)](https://youtu.be/urNAghHCyTk)
